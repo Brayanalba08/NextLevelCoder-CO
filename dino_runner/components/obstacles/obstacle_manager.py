@@ -1,4 +1,4 @@
-from dino_runner.utils.constants import SMALL_CACTUS
+from dino_runner.utils.components import SMALL_CACTUS
 from dino_runner.components.obstacles.cactus import Cactus
 import pygame
 
@@ -8,7 +8,7 @@ class ObstacleManager:
         self.obstacles = []
 
     def update(self, game):
-        if len(self.obstacles) == 0:
+        if len(self.obstacle) ==0:
             new_obstacle = Cactus(SMALL_CACTUS)
             self.obstacles.append(new_obstacle)
 
@@ -17,7 +17,7 @@ class ObstacleManager:
             if game.player.dino_rect.colliderect(obstacle.rect):
                 pygame.time.delay(500)
                 game.playing = False
-                break;  
+                break;
 
     def draw(self, screen):
         for obstacle in self.obstacles:
