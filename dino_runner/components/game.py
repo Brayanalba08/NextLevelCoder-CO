@@ -24,11 +24,25 @@ class Game:
         self.power_up_manager.reset_power_ups(self.points)
         # Game loop: events - update - draw
         self.playing = True
-        while self.playing:
-            self.events()
-            self.update()
-            self.draw()
-        pygame.quit()
+        if self.playing == True:
+            while self.playing:
+                self.events()
+                self.update()
+                self.draw()
+            pygame.quit()
+        else:
+            self.menu(dead_count)
+
+    def menu(self, dead_count):
+        global points
+        self.run = True
+        while self.run:
+            screen.fill((255, 255, 255))
+            front = font.Font("freesanbold.ttf", 30)
+
+            if self.dead_count == 0:
+                self.score()
+                
     def events(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
